@@ -16,14 +16,14 @@ class Board
   def initialize
     @rows = Array.new(8) { Array.new(8) }
     # NullPiece.new
-    rows[1].map!.with_index { |el, i| el = Pawn.new("black", self, [1, i]) }
-    rows[6].map!.with_index { |el, i| el = Pawn.new("white", self, [6, i]) }
+    rows[1].map!.with_index { |el, i| el = Pawn.new(:black, self, [1, i]) }
+    rows[6].map!.with_index { |el, i| el = Pawn.new(:white, self, [6, i]) }
 
     @rows.each_with_index do |row, i|
       if 6 > i && i > 1
         rows[i].map! {|el| el = NullPiece.instance }
       elsif i == 0 || i == 7
-        color = i == 0 ? "black" : "white"
+        color = i == 0 ? :black : :white
         rows[i] = [
           Rook.new(color, self, [i, 0]),
           Knight.new(color, self, [i, 1]),

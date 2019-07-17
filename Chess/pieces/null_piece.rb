@@ -10,7 +10,7 @@ class NullPiece
   def color; end
 
   def symbol
-    :_
+    " "
   end
 
   def inspect
