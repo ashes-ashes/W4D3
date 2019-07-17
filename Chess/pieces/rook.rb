@@ -1,4 +1,6 @@
 require_relative "../piece_types/slidable.rb"
+require_relative "../piece.rb"
+
 
 class Rook < Piece
 

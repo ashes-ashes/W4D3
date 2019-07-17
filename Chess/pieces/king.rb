@@ -1,4 +1,6 @@
 require_relative '../piece_types/steppable.rb'
+require_relative "../piece.rb"
+
 
 class King < Piece
   

@@ -1,9 +1,8 @@
-require "slidable.rb"
-require "steppable.rb"
+
 
 class Piece
-  include Steppable, Slidable
-  attr_accessor :pos
+  attr_accessor :pos, :board
+  attr_reader :color
 
   def initialize(color, board, pos)
     @color = color
@@ -11,5 +10,12 @@ class Piece
     @board = board
   end
 
+  def empty?
+    return false
+  end
+
+  def inspect
+    symbol
+  end
 
 end

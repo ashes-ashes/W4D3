@@ -6,13 +6,13 @@ module Slidable
     
   def moves
     possible_moves = []
-    moves_dirs.each do |dir|
+    move_dirs.each do |dir|
       step = stepper(pos, dir)
-      while board[step].valid_pos? && board[step] == nil
+      while board.valid_pos?(step) && board[step].empty?
         possible_moves << step
         step = stepper(step, dir)
       end
-      if board[step].color != color
+      if board.valid_pos?(step) && board[step].color != color
         possible_moves << step
       end
     end
