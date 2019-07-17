@@ -4,6 +4,10 @@ class Queen < Piece
 
   include Slidable
 
+  def symbol
+    :Q
+  end
+
   def move_dirs
     [
       [1, 0],

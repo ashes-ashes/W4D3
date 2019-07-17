@@ -4,6 +4,10 @@ class Bishop < Piece
 
   include Slidable
 
+  def symbol
+    :B
+  end
+
   def move_dirs
     [
       [1, 1],

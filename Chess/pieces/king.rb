@@ -4,6 +4,10 @@ class King < Piece
   
   include Steppable
 
+  def symbol
+    :K
+  end
+
   def move_diffs
     [
       [1, 0],

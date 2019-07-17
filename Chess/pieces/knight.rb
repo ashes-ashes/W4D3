@@ -4,6 +4,10 @@ class Knight < Piece
 
   include Steppable
 
+  def symbol
+    :N
+  end
+
   def move_diffs
     [
       [-2, -1],

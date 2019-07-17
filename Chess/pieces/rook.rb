@@ -4,6 +4,10 @@ class Rook < Piece
 
   include Slidable
 
+  def symbol
+    :R
+  end
+
   def move_dirs
     [
       [1, 0],
