@@ -2,7 +2,7 @@ require "singleton"
 require_relative "../piece.rb"
 
 
-class NullPiece
+class NullPiece < Piece
   include Singleton
   
   def initialize; end
@@ -11,6 +11,10 @@ class NullPiece
 
   def symbol
     " "
+  end
+
+  def moves
+    []
   end
 
   def inspect

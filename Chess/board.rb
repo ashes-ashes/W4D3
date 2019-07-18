@@ -9,6 +9,8 @@ require_relative "pieces/queen.rb"
 require_relative "pieces/king.rb"
 require_relative "pieces/null_piece.rb"
 
+require "byebug"
+
 class Board
 
   attr_reader :rows
@@ -69,6 +71,48 @@ class Board
 
   def add_piece(piece, pos)
     self[pos] = piece
+  end
+
+  def pieces
+    rows.flatten
+    #list.reject { |el| el.is_a? NullPiece }
+  end
+
+  def find_king(color)
+    pieces.find { |el| el.is_a?(King) && el.color == color }
+  end
+
+  def in_check?(color)
+    king = find_king(color)
+    pieces.each do |piece|
+      if piece.moves.include?(king.pos)
+        return true
+      end
+    end
+    false
+  end
+
+  def checkmate?(color)
+    return true if pieces.none? do |piece| 
+      piece.valid_moves.length > 0 && piece.color == color
+    end
+  end
+
+  def dup
+    #debugger
+    new_board = Board.new
+    new_board.rows.map!.with_index do |row, i|
+      #call piece dup method on each piece from old board
+      row.map.with_index do |piece, j|
+        position = [i, j]
+        if self[position].empty?
+          NullPiece.instance
+        else
+          self[position].dup(new_board)
+        end
+      end
+    end
+    new_board
   end
 
 end

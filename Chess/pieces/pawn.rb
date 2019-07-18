@@ -43,11 +43,11 @@ class Pawn < Piece
     side_attack_1 = @board[[pos[0]+forward_dir, pos[1] + 1]]
     side_attack_2 = @board[[pos[0]+forward_dir, pos[1] - 1]]
 
-    if !side_attack_1.empty? && side_attack_1.color != self.color
+    if side_attack_1 && !side_attack_1.empty? && side_attack_1.color != self.color
       attacks << side_attack_1.pos
     end
     
-    if !side_attack_2.empty? && side_attack_2.color != self.color
+    if side_attack_2 && !side_attack_2.empty? && side_attack_2.color != self.color
       attacks << side_attack_2.pos
     end
 
